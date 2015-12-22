@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--<link href="css/styles.css" rel="stylesheet" />-->
+</head>
+<!--{{template "_head.html" .Title}}-->
+<body>
+
+{{template "_styles.html" .}}
+
+<h1>Editing Contact #{{.Title}}</h1>
+
+<form class="imagetable" action="/upload/{{.Title}}" method="POST"  enctype="multipart/form-data">
+	<div>
+		<label for="file">Filename:</label>
+		<input type="file" name="file" id="file">
+		<br>
+		<br>
+	</div>
+	<div>
+	<input type="submit" value="Submit">
+	</div>
+</form>
+
+</body>
+</html>

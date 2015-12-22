@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--<link href="css/styles.css" rel="stylesheet" />-->
+</head>
+<!--{{template "_head.html" .Title}}-->
+<body>
+
+{{template "_styles.html" .}}
+
+<h1>Application {{.Position}}</h1>
+<h2>{{.Title}}</h2>
+
+<a id="submit" href="/">Back to Home</a>
+<a id="submit" href="/edit/{{.Parent}}">Back to Contact</a><br>
+<br>
+
+<table>
+<tr>
+<td  id="tdborder">
+
+<form class="imagetable" action="/appsave/{{.Title}}" method="POST">
+	<div>
+		Position:<br>
+		<input type="text" name="position" value = {{.Position}}>
+		<br>
+		Company:<br>
+		<input type="text" name="company" value = {{.Company}}>
+		<br>
+		Date Applied:<br>
+		<input type="text" name="dateapplied"  value = {{.DateApplied}}>
+		<br>
+		Followup:<br>
+		<input type="text" name="followup" value = {{.Followup}}>
+		<br>
+		Action:<br>
+		<!--<input type="text" name="action" value = {{.Action}}>-->
+		<select type="text" name="action" value = {{.Action}}}>
+		  <option value="Ring back">Ring back</option>
+		  <option value="Wait for feedback">Wait for feedback</option>
+		  <option value="More information">More information</option>
+		</select>		
+		<br>
+		Notes:<br>
+	<textarea name="notes" rows="{{.NotesRows}}" cols="60">{{printf "%s" .Notes}}</textarea>
+	</div>
+	<div>
+	<input id="submit" type="submit" value="Save">
+	</div>
+</form>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

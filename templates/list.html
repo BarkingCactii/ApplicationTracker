@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--<link href="css/styles.css" rel="stylesheet" />-->
+</head>
+<!--{{template "_head.html" .Title}}-->
+<body>
+
+{{template "_styles.html" .}}
+
+<h1>{{.Title}}</h1>
+
+<!--
+<table class="imagetable">
+<tr class="rounded">
+<td>one</td>
+<td>two</td>
+<td>three</td>
+</tr>
+<tr class="rounded">
+<td>one</td>
+<td>two</td>
+<td>three</td>
+</tr>
+</table>
+-->
+<br>
+
+<table class="imagetable">
+  <tr>
+	<th>Logo</th>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Applications</th>
+    <th>Edit</th>
+  </tr>
+  {{range .Contacts}}
+  <tr class="{{.Attention}}">
+	<td><img src=/logos/{{.Logo}} alt=" " height="50"></td>
+    <td>{{.Company}}</td>
+    <td>{{.Contact}}</td>
+    <td>{{.Phone}}</td>
+    <td>{{.Email}}</td>
+    <td>{{.ApplicationsTotal}}</td>
+<!--    <td><a href="/edit/{{.Title}}"><img src="/img/arrow-right-c.png" alt=" " height="24" width="24"></a> <a href="/delete/{{.Title}}"><img src="/img/trash-a.png" alt=" "  height="24" width="24"></a></td>-->
+	<td><a id="submit" href="/edit/{{.Title}}">Edit</a><a id="submit" href="/delete/{{.Title}}">Delete</a> </td>
+  </tr>
+  {{end}}
+</table>
+
+<br>
+
+<a id="submit" href="/edit/{{.Add}}">Add Contact
+<!--	<img src="/img/android-add.png" alt=" "  height="24" width="24"> -->
+</a>
+
+</body>
+</html>

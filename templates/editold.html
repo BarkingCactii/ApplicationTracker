@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--<link href="css/styles.css" rel="stylesheet" />-->
+</head>
+<!--{{template "_head.html" .Title}}-->
+<body>
+
+{{template "_styles.html" .}}
+
+<h1>Editing Contact #{{.Title}}</h1>
+
+<form class="imagetable" action="/save/{{.Title}}" method="POST">
+	<div>
+		Company:<br>
+		<input type="text" name="company" value = {{.Company}}>
+		<br>
+		Contact:<br>
+		<input type="text" name="contact"  value = {{.Contact}}>
+		<br>
+		Phone:<br>
+		<input type="text" name="phone" value = {{.Phone}}>
+		<br>
+		Email:<br>
+		<input type="text" name="email" value = {{.Email}}>
+		<br>
+		Logo:<br>
+		<select type="text" name="logo" value = {{.Logo}}}>
+		  <option value="cactus.png">cactus.png</option>
+		  <option value="davidson.png">davidson.png</option>
+		  <option value="adaps.png">adaps.png</option>
+		  <option value="synergy.png">synergy.png</option>
+		</select>			
+		<br>
+		Notes:<br>
+	<textarea name="body" rows="{{.BodyRows}}" cols="60" >{{printf "%s" .Body}}</textarea>
+	</div>
+	<div>
+	<input id="submit" type="submit" value="Save">
+	</div>
+</form>
+
+<h2>Applications</h2>
+
+<table class="imagetable">
+  {{range .Applications}}
+  <tr>
+    <td>{{.Position}}</td>
+    <td>{{.DateApplied}}</td>
+    <td>{{.Followup}}</td>
+    <td>{{.Action}}</td>
+    <td><a href="/application/{{.Title}}"><img src="/img/arrow-right-c.png" alt=" " height="24" width="24"></a> <a href="/delete/{{.Title}}"><img src="/img/trash-a.png" alt=" "  height="24" width="24"></a></td>
+  </tr>
+  {{end}}
+</table>
+<br>
+<a href="/application/{{.Add}}">
+	<img src="/img/android-add.png" alt="Add new application"  height="24" width="24">
+</a>
+
+
+</body>
+</html>
